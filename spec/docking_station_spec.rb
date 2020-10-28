@@ -1,13 +1,18 @@
-require './lib/docking_station'
+require_relative '../lib/docking_station'
+require_relative '../lib/bike'
 
-describe 'DockingStation' do
+describe DockingStation do
   it 'creates new DockingStation instance' do
-    expect(docking_station = DockingStation.new).to eq docking_station
+    expect(subject).to be_instance_of(DockingStation)
   end
-end
 
-describe 'DockingStation instances to respond to release_bike method' do
   it 'create instance able to respond to release_bike method' do
-    expect(DockingStation.new).to respond_to(:release_bike)
+    expect(subject).to respond_to(:release_bike)
+  end
+
+  context 'when release_bike is called' do
+    it 'returns a Bike instance' do
+      expect(subject.release_bike).to be_instance_of(Bike)
+    end
   end
 end
