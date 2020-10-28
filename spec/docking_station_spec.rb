@@ -12,6 +12,7 @@ describe DockingStation do
 
   context 'when release_bike is called' do
     it 'returns a Bike instance' do
+      subject.dock
       expect(subject.release_bike).to be_instance_of(Bike)
     end
   end
@@ -25,6 +26,12 @@ describe DockingStation do
   context 'when bikes array is accessed using attr_reader' do
     it 'returns the bikes array' do
       expect(subject.bikes).to be_instance_of(Array)
+    end
+  end
+
+  context 'when release_bike is called' do
+    it 'raises an error if bikes array is empty' do
+      expect { subject.release_bike }.to raise_error(RuntimeError)
     end
   end
 end
