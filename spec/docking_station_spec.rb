@@ -15,4 +15,16 @@ describe DockingStation do
       expect(subject.release_bike).to be_instance_of(Bike)
     end
   end
+
+  context 'when dock is called' do
+    it 'docks a Bike' do
+      expect {subject.dock}.to change {subject.bikes.length}.by(1)
+    end
+  end
+
+  context 'when bikes array is accessed using attr_reader' do
+    it 'returns the bikes array' do
+      expect(subject.bikes).to be_instance_of(Array)
+    end
+  end
 end
